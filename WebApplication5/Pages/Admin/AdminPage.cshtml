@@ -1,0 +1,94 @@
+﻿@model List<WebApplication5.ViewModels.BookViewModel>
+
+
+
+@{
+	ViewData["Title"] = "Admin page";
+}
+@if (TempData["Message"] != null)
+{
+	<script>
+		alert('@TempData["Message"]');
+	</script>
+}
+
+<h1>@ViewData["Title"]</h1>
+<form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="GenerationKeys">
+	<div class="row">
+		<div class="col-md-4">
+			<div>
+				<input type="submit" value="Generate key to buy book" class="w-100 btn btn-lg btn-primary" />
+			</div>
+		</div>
+	</div>
+</form>
+<label> </label>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Book" asp-action="RedirectToAddBookView">
+	<div class="row">
+		<div class="col-md-4">
+			<div>
+				<input type="submit" value="Add new book" class="w-100 btn btn-lg btn-primary" />
+			</div>
+		</div>
+	</div>
+</form>
+
+<label> </label>
+
+<table style="width:100%">
+
+	<tr>
+		<th>Book name</th>
+		<th>Author</th>
+		<th>Edit book</th>
+		<th>Delete book</th>
+
+	</tr>
+	@foreach (var book in Model)
+	{
+		<tr>
+			<td>@book.Name</td>
+			<td>@book.Author</td>
+
+			<td>
+				<form method="post" asp-controller="Book" asp-action="RedirectToEditBookView" asp-route-id="@book.Id">
+					<div class="row">
+						<div class="col-md-4">
+							<div>
+								<input type="submit" value="Edit" class="w-30 btn btn-lg btn-primary" />
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</td>
+			<td>
+				<form method="post" asp-controller="Book" asp-action="DeleteBook" asp-route-id="@book.Id">
+					<div class="row">
+						<div class="col-md-4">
+							<div>
+								<input type="submit" value="Delete" class="w-60 btn btn-lg btn-primary" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</td>
+		</tr>
+	}
+
+
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			padding: 5px;
+		}
+
+		table {
+			border-spacing: 15px;
+		}
+	</style>
+
+</table>
+
+

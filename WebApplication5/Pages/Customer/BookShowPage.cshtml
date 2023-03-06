@@ -1,0 +1,60 @@
+﻿@model WebApplication5.ViewModels.BookViewModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@{
+	ViewData["Title"] = "BookShow";
+}
+
+<div class="col-sm-12">
+	<table class="table" id="grdBooks">
+		<thead>
+			<tr>
+				<th><img src='@Url.Action("ShowImage", "Book", new { id = @Model.Id })' width="300" height="300" border-radius="8px" border="5px solid #ddd" border-radius="4px" padding="15px" border-radius="8px" /></th>
+
+				<th>
+					<h1> @Model.Name </h1>
+					<p>Author: @Model.Author</p>
+					<p>Genre: @Model.Genre</p>
+					<p>Description: @Model.Description</p>
+				</th>
+		</thead>
+
+	</table>
+</div>
+@if (SignInManager.IsSignedIn(User))
+{
+	<p> </p>
+	<p> </p>
+	<p> If you want get the book, enter gift code and press the button ↓ </p>
+	using (Html.BeginForm("EnshureKey", "Book", new { bookId = Model.Id }))
+	{
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-floating">
+					<input class="form-control" name="key" aria-required="true" autocomplete="off" />
+				</div>
+				<div>
+					<input type="submit" value="Download" class="w-60 btn btn-lg btn-primary" />
+				</div>
+			</div>
+		</div>
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="post" enctype="multipart/form-data" asp-controller="Book" asp-action="AddOrUpdateBook">
+</form>
+

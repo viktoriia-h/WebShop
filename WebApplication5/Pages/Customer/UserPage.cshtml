@@ -1,0 +1,45 @@
+﻿@model List<WebApplication5.ViewModels.BookViewModel>
+
+
+
+@{
+	ViewData["Title"] = "All books";
+}
+
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="form-inline pull-right">
+			<label>Search</label>
+			<input type="text" class="form-control" id="txtSearch" onkeyup="getBooks()" />
+		</div>
+	</div>
+	<div id="grdBooks"></div>
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+	
+	function getBooks(){
+    $.ajax({
+      url: '@Url.Action("SearchBook", "Home")',
+      type: 'POST',
+      data: { searchText: $('#txtSearch').val() },
+      success: function(res){
+				$('#grdBooks').html('').html(res);
+      },
+      error: function(err) {
+        console.log(err);
+      }
+	});
+	}
+	$(document).ready(function () {
+		getBooks();
+	});
+</script>
+}
+
+
+
+

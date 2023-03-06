@@ -1,0 +1,61 @@
+﻿@model WebApplication5.ViewModels.BookViewModel
+
+
+    @{
+        ViewData["Title"] = "Add new book";
+    }
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+<form method="post" enctype="multipart/form-data" asp-controller="Book" asp-action="AddOrUpdateBook">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input asp-for="Id" class="form-control" readonly="readonly" />
+                <label asp-for="Id" class="form-label"></label>
+                <span asp-validation-for="Id"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Name" class="form-control" aria-required="true" />
+                <label asp-for="Name" class="form-label"></label>
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Author" class="form-control" aria-required="true" />
+                <label asp-for="Author" class="form-label"></label>
+                <span asp-validation-for="Author"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Description" class="form-control" aria-required="true" />
+                <label asp-for="Description" class="form-label"></label>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Year" class="form-control" aria-required="true" />
+                <label asp-for="Year" class="form-label"></label>
+                <span asp-validation-for="Year"></span>
+            </div>
+
+            <select asp-for="Genre">
+                <option value="">Select a genre</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Romance">Romance</option>
+                <option value="Detective & Mystery">Detective & Mystery</option>
+                <option value="Horror">Horror</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Children’s Fiction">Children’s Fiction</option>
+                <option value="History">History</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <div>
+                <input type="submit" class="w-100 btn btn-lg btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+

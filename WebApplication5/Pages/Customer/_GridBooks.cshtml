@@ -1,0 +1,61 @@
+﻿@model List<WebApplication5.ViewModels.BookViewModel>
+
+<div class="col-sm-12">
+	<table class="table" id="grdBooks">
+		<thead>
+			<tr>
+				<th> </th>
+				<th>Name</th>
+				<th>Author</th>
+				<th>Genre</th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model.Count() != 0)
+			{
+				@foreach (var book in Model)
+				{
+					<tr>
+						<th><img src='@Url.Action("ShowImage", "Book", new { id = @book.Id })' width="174" height="174" border-radius="8px" border="5px solid #ddd" border-radius="4px" padding="15px" border-radius="8px" /></th>
+						<th><a class="nav-link text-dark" asp-asp-controller="Book" asp-action="RedirectToSwowBookView" asp-route-id="@book.Id">@book.Name </a></th>
+						<th><p>@book.Author</p></th>
+						<th><p>@book.Genre</p></th>
+					</tr>
+				}
+			}
+			else
+			{
+				<tr>
+					<td colspan="3" class="text-center"> No Books Found!</td>
+				</tr>
+			}
+
+		</tbody>
+	</table>
+</div>
+
+
+
+@*@foreach (var book in Model)
+	{
+		<table style="width:100%">
+			<td><img src='@Url.Action("ShowImage", "Book", new { id = @book.Id })' width="174" height="174" border-radius="8px" border="5px solid #ddd" border-radius="4px" padding="15px" border-radius="8px" /></td>
+			<td><a class="nav-link text-dark" asp-asp-controller="Book" asp-action="RedirectToSwowBookView" asp-route-id="@book.Id">@book.Name </a></td>
+			<td><p>@book.Author</p></td>
+			<td><p>@book.Genre</p></td>
+			<p> </p>
+			<p> </p>
+		</table>
+
+		<style>
+			table, th, td {
+				border: 1px solid black;
+				padding: 5px;
+			}
+
+			table {
+				border-spacing: 15px;
+			}
+		</style>
+
+	}*@

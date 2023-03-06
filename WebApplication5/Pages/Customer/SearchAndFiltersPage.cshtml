@@ -1,0 +1,19 @@
+﻿@model List<WebApplication5.ViewModels.BookViewModel>
+
+@{
+    ViewData["Title"] = "BookShow";
+}
+
+
+
+
+<form>
+    <p>
+        <select method="post" asp-controller="Home" asp-action="FindBook">
+            <option value="">All</option>
+        </select>
+        Movie Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+

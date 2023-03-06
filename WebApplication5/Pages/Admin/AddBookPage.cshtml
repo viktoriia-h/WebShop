@@ -1,0 +1,63 @@
+﻿@model WebApplication5.ViewModels.BookViewModel
+
+
+@{
+	ViewData["Title"] = "Add new book";
+}
+
+<h1>@ViewData["Title"]</h1>
+<form method="post" enctype="multipart/form-data" asp-controller="Book" asp-action="AddOrUpdateBook">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-floating">
+				<input asp-for="Name" class="form-control" aria-required="true" />
+				<label asp-for="Name" class="form-label"></label>
+				<span asp-validation-for="Name"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Author" class="form-control" aria-required="true" />
+				<label asp-for="Author" class="form-label"></label>
+				<span asp-validation-for="Author"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Description" class="form-control" aria-required="true" />
+				<label asp-for="Description" class="form-label"></label>
+				<span asp-validation-for="Description"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Year" class="form-control" aria-required="true" />
+				<label asp-for="Year" class="form-label"></label>
+				<span asp-validation-for="Year"></span>
+			</div>
+
+			<select asp-for="Genre">
+				<option value="">Select a genre</option>
+				<option value="1">Fantasy</option>
+				<option value="2">Science Fiction</option>
+				<option value="3">Adventure</option>
+				<option value="4">Romance</option>
+				<option value="5">Detective & Mystery</option>
+				<option value="6">Horror</option>
+				<option value="7">Thriller</option>
+				<option value="8">Children’s Fiction</option>
+				<option value="9">History</option>
+				<option value="10">Other</option>
+			</select>
+
+			<div class="col-md-10">
+				<p>Upload book file</p>
+				<input class="form-control" type="file" asp-for="Pdf" />
+			</div>
+
+			<div class="col-md-10">
+				<p>Upload book picture file</p>
+				<input class="form-control" type="file" asp-for="Picture" />
+			</div>
+
+
+			<div>
+				<input type="submit" class="w-100 btn btn-lg btn-primary" />
+			</div>
+		</div>
+	</div>
+</form>
